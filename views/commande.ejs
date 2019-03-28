@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Commander <%=prod.nom%> </title>
+    <link rel="stylesheet" href="/css/uikit.min.css" >
+  </head>
+  <body>
+    <%- include('header'); %>
+    <main class="uk-padding">
+      <h1 class="uk-h1"> <%= prod.nom %> </h1>
+
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+          <div class="uk-child-width-1-2@s" uk-grid>
+            <div>
+                <div class="uk-background-top-right uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(/<%= prod.image %>);">
+                </div>
+            </div>
+            <div>
+              <p class="uk-text-small"> <%= prod.description %></p>
+              <button class="uk-button uk-button-primary"> <%= prod.prix %> </button>
+            </div>
+          </div>
+
+          <br>
+          <br>
+          <h1 class="uk-h1"> Commander <span class="uk-link"><%= prod.nom %></span> </h1>
+
+          <form method="post" class="uk-form-stacked" action="/valider-commande/<%=prod.id %>" id="form">
+            <div class="uk-margin">
+              <label for="nom" class="uk-form-label">Votre nom</label>
+              <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon:user"></span>
+                <input type="text" class="uk-input" id="nom" name="nom" required value="">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label for="telephone" class="uk-form-label">Contact</label>
+              <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon:receiver"></span>
+                <input type="tel" class="uk-input" id="telephone" name="contact" required value="">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <label for="nom" class="uk-form-label">Adresse</label>
+              <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon:location"></span>
+                <input type="text" class="uk-input" id="address" name="adresse" required value="">
+              </div>
+            </div>
+
+            <div class="uk-margin">
+              <button type="submit" class="uk-button uk-button-primary">Valider la commande</button>
+            </div>
+
+          </form>
+        </div>
+
+    </main>
+    <%- include('footer'); %>
+
+    <script>
+    // $(document).ready( function() {
+    //   $('#form').submit(function(e){
+    //     e.preventDefault();
+    //     var f = $(this), data = f.serialize();
+    //     $.ajax({
+    //       url: f.attr('action'),
+    //       type: 'POST',
+    //       dataType: 'JSON',
+    //       data: data,
+    //       error: function(error) {
+    //         alert("Erreur: "+error.status+ ' - '+error.statusText);
+    //       },
+    //       success: function(res){
+    //         if(res.success){
+    //           UIkit.notification({message: 'Votre commande a bien été reçue. Nous vous contacterons sous peu.', status: 'success'});
+    //           f[0].reset();
+    //         } else {
+    //           UIkit.notification({message: 'Une erreur est survenue.', status: 'warning'});
+    //         }
+    //       }
+    //     })
+    //   })
+    // });
+  </script>
+  </body>
+</html>

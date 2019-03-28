@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Page d'accueil du projet</title>
+    <link rel="stylesheet" href="/css/uikit.min.css" >
+  </head>
+  <body>
+    <%- include('header'); %>
+    <main class="uk-padding">
+      <h1 class="uk-h1">Alimentation</h1>
+
+      <% produits.forEach(function(produit, index) { %>
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+          <h3 class="uk-card-title"> <%= produit.nom %> </h3>
+          <div class="uk-child-width-1-2@s" uk-grid>
+            <div>
+                <div class="uk-background-top-right uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url(<%= produit.image %>);">
+                </div>
+            </div>
+            <div>
+              <p class="uk-text-small"> <%= produit.description %></p>
+              <button class="uk-button uk-button-primary"> <%= produit.prix %> </button> <a href="/commander/<%= produit.id %>" class="uk-button uk-button-secondary">Commander</a>
+            </div>
+          </div>
+        </div>
+        <div class="uk-divider-small"></div>
+      <% }); %>
+
+    </main>
+    <%- include('footer'); %>
+  </body>
+</html>
